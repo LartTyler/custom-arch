@@ -1,0 +1,20 @@
+#!/bin/usr/env sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x ulauncher > /dev/null || ulauncher --hide-window --no-window-shadow &
+pgrep -x nitrogen > /dev/null || nitrogen --restore &
+[-x $HOME/.config/polybar/launch.sh] && $HOME/.config/polybar/launch.sh
+
+bspc monitor -d I II III IV V VI VII VIII IX X
+
+bspc config border-width 2
+bspc config window_gap 12
+bspc config split_ratio 0.52
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config remove_unplugged_monitors true
+bspc config remove_disabled_monitors true
+bspc config merge_overlapping_monitors true
+
+bspc rule -a ulauncher focus=on
+bspc rule -a polybar border=off manage=off
