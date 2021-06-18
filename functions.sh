@@ -14,8 +14,6 @@ usage() {
     echo "--after <action>"
     echo "    What action to take after the initial installation is complete. Allowed values are"
     echo "    'restart', 'shutdown', or 'none' (default: 'none')."
-    echo "--hostname <name>"
-    echo "    Sets the hostname during install. If not provided, you will have to do this yourself."
     echo "--set-root-password"
     echo "    Prompt for a root password, instead of generating a random one."
     echo "-y, --minimal-interaction"
