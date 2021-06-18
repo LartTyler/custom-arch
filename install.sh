@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 
-source "$(dirname "$0")/functions.sh"
+script_dirname=$(dirname "$0")
+
+source "${script_dirname}/functions.sh"
 
 on_complete_action="none"
 hostname=""
@@ -151,15 +153,17 @@ echo "done"
 
 echo -n "Bootstrapping install configs ... "
 
-cp "$(dirname "$0")/bootstrap.sh" /mnt/bootstrap.sh
-arch-chroot /mnt /bootstrap.sh "$root_password" "$username" "$user_password"
+dir_basename=$(basename "$script_dirname")
+
+cp -r "$script_dirname" "/mnt/opt/$dir_basename"
+arch-chroot /mnt "/opt/$dir_basename/bootstrap.sh" "$root_password" "$username" "$user_password"
 
 echo "done"
 
 echo -n "Cleaning up ... "
 
 trap - EXIT SIGINT SIGTERM
-rm -f /mnt/bootstrap.sh
+rm -rf "/mnt/opt/$dir_basename"
 
 echo "done"
 
