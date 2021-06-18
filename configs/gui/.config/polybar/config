@@ -1,0 +1,45 @@
+[bar/main]
+width = 100%
+height = 2.5%
+radius = 6.0
+fixed-center = false
+
+border-size = 0
+line-size = 2
+padding = 1
+module-margin = 1
+
+modules-left = date bspwm xwindow
+
+tray-position = right
+tray-padding = 2
+tray-maxsize = 24
+
+wm-restack = bspwm
+
+[module/bspwm]
+type = internal/bspwm
+enable-click = false
+enable-scroll = false
+
+label-focused = " %name% "
+label-focused-underline = #fba922
+
+label-occupied = " %name% "
+label-occupied-underline = #ffaa00
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%a %d"
+time = "%I:%M %p"
+
+format-prefix =
+format-underline = #0a6cf5
+
+label = %date% %time%
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
